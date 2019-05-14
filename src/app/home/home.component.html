@@ -1,0 +1,23 @@
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="container">
+        <nav>
+          <ul class="list-group">
+            <li class="btn btn-dark" [ngClass]="{active:menuindex==1}" (click)="menu(1)">
+              学生管理
+            </li>
+            <li class="btn btn-dark" [ngClass]="{active:menuindex==2}" (click)="menu(2)">
+              成绩查询
+            </li>
+            <li class="btn btn-dark" [ngClass]="{active:menuindex==3}" (click)="menu(3)">
+              退出系统
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div id="tb" class="col-sm-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

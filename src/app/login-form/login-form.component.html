@@ -1,0 +1,32 @@
+<div id="1" class="container">
+  <h2>登陆</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="ui form"
+    [class.error]="!myForm.valid && myForm.dirty">
+    <div class="form-group">
+      <label for="username">用户名：</label>
+      <input type="text" class="form-control" id="username" placeholder="用户名" name="username"
+        [formControl]="myForm.controls['username']">
+      <p *ngIf="!username.valid" class="ui error message">请填写用户名</p>
+    </div>
+    <div class="form-group">
+      <label for="password">密码：</label>
+      <input type="password" id="password" [ngClass]="{'is-invalid':password.hasError('required')}"
+        class="form-control is-invalid" placeholder="长度超过5位的密码" name="password"
+        [formControl]="myForm.controls['password']" ngModel minlength="5">
+      <p *ngIf="password.hasError('required')" class="ui error message">请填写密码</p>
+      <p *ngIf="password.invalid" class="ui error message">密码无效</p>
+    </div>
+    <div class="form-group">
+      <label for="test">验证码</label>
+      <input type="text" id="test" placeholder="请输入验证码" name="test" [formControl]="myForm.controls['pin']">
+      <p *ngIf="pin.hasError('required')" class="ui error message">请填写验证码</p>
+      <p *ngIf="pin.invalid && (pin.errors.min||pin.errors.max)" class="ui error message">验证码为4位</p>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

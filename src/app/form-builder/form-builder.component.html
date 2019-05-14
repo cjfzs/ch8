@@ -1,0 +1,28 @@
+<div class="ui raised segment">
+  <h2 class="ui header">登陆</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="ui form">
+
+    <div class="field" [class.error]="!username.valid && username.touched">
+      <label for="usernameInput">用户名</label>
+      <input type="text" id="usernameInput" placeholder="用户名" name="username"
+        [formControl]="myForm.controls['username']">
+    </div>
+
+    <div class="field">
+      <label for="passwordInput">密码</label>
+      <input type="password" id="skupassword" placeholder="长度超过5位的密码" name="password"
+        [formControl]="myForm.controls['password']" ngModel minlength="5">
+    </div>
+
+    <div class="field">
+      <label for="test">验证码</label>
+      <input type="text" id="test" placeholder="请输入验证码" name="test" [formControl]="myForm.controls['test']">
+    </div>
+
+    <div *ngIf="!username.valid" class="ui error message">用户名无效</div>
+    <div *ngIf="!username.hasError('invalidusername')" class="ui error message">请填写用户名</div>
+    <div *ngIf="!myForm.valid" class="ui error message">username is required</div>
+
+    <button type="submit" (onClick)="onSubmit" class="ui button">登陆</button>
+  </form>
+</div>

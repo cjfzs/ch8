@@ -1,0 +1,30 @@
+<div id="student" class="container">
+  <div>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>姓名</td>
+          <td>性别</td>
+          <td *ngIf="showcourse==0">web成绩</td>
+          <td>嵌入式成绩</td>
+        </tr>
+      </thead>
+      <tr *ngFor='let s of students'>
+        <td *ngIf="isMale==2 || s.gender==isMale">{{s.id}}</td>
+        <td *ngIf="isMale==2 || s.gender==isMale">{{s.name}}</td>
+        <td *ngIf="isMale==2 || s.gender==isMale">{{s.gender=='1'?'男生':'女生'}}</td>
+        <td *ngIf="showcourse==0 && (isMale==2 || s.gender==isMale)"
+          [ngStyle]="{'background-color':s.web.count<=60?'red':(s.web.count>=90?'green':'')}">{{s.web.count}}
+        </td>
+        <td *ngIf="isMale==2 || s.gender==isMale"
+          [ngStyle]="{'background-color':s.embeded.count<=60?'red':(s.embeded.count>=90?'green':'')}">
+          {{s.embeded.count}}</td>
+      </tr>
+    </table>
+    <div class="btn-group">
+      <button class="btn btn-primary btn-dark" (click)="toggle()">{{btnShowmale()}}</button>
+      <button class="btn btn-primary btn-dark" (click)="toggleClass()">{{btnShowclass()}}</button>
+    </div>
+  </div>
+</div>

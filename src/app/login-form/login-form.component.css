@@ -1,0 +1,14 @@
+h2{
+    margin-left: 200px;
+}
+form{
+    margin-top: 5vh;
+    margin-left: 200px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 20px;
+    width: 500px;
+}
+button{
+    margin-top: 10px;
+}
